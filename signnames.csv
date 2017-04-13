@@ -42,3 +42,26 @@ ClassId,SignName
 40,Roundabout mandatory
 41,End of no passing
 42,End of no passing by vehicles over 3.5 metric tons
+
+
+axs[4*i].axis('off')
+axs[4*i].imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+axs[4*i].set_title('input')
+guess1 = my_top_k[1][i][0]
+index1 = np.argwhere(y_validation == guess1)[0]
+axs[4*i+1].axis('off')
+axs[4*i+1].imshow(X_validation[index1].squeeze())
+axs[4*i+1].set_title('top guess: {} ({:.0f}%)'.format(guess1, 100*my_top_k[0][i][0]))
+guess2 = my_top_k[1][i][1]
+index2 = np.argwhere(y_validation == guess2)[0]
+axs[4*i+2].axis('off')
+axs[4*i+2].imshow(X_validation[index2].squeeze())
+axs[4*i+2].set_title('2nd guess: {} ({:.0f}%)'.format(guess2, 100*my_top_k[0][i][1]))
+guess3 = my_top_k[1][i][2]
+index3 = np.argwhere(y_validation == guess3)[0]
+axs[4*i+3].axis('off')
+axs[4*i+3].imshow(X_validation[index3].squeeze())
+axs[4*i+3].set_title('3rd guess: {} ({:.0f}%)'.format(guess3, 100*my_top_k[0][i][2]))
+
+
+50 epochs not good, use 40 epochs
